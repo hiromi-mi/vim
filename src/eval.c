@@ -4079,22 +4079,21 @@ eval6(
 		    n1 = n1 * n2;
 		else if (op == '/')
 		{
-		    if (n2 == 0)	/* give an error message? */
+		    if (n2 == 0)
 		    {
-			if (n1 == 0)
-			    n1 = VARNUM_MIN; /* similar to NaN */
-			else if (n1 < 0)
-			    n1 = -VARNUM_MAX;
-			else
-			    n1 = VARNUM_MAX;
+			EMSG(_("E949: Devided by Zero"));
+			return FAIL;
 		    }
 		    else
 			n1 = n1 / n2;
 		}
 		else
 		{
-		    if (n2 == 0)	/* give an error message? */
-			n1 = 0;
+		    if (n2 == 0)
+		    {
+			EMSG(_("E949: Devided by Zero"));
+			return FAIL;
+		    }
 		    else
 			n1 = n1 % n2;
 		}

@@ -228,7 +228,7 @@ func Test_float2nr()
   call assert_equal(1, float2nr(1.234))
   call assert_equal(123, float2nr(1.234e2))
   call assert_equal(12, float2nr(123.4e-1))
-  let max_number = 1/0
+  let max_number = 1.0/0
   let min_number = -max_number
   call assert_equal(max_number/2+1, float2nr(pow(2, 62)))
   call assert_equal(max_number, float2nr(pow(2, 63)))

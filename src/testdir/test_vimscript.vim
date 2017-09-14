@@ -1224,9 +1224,9 @@ func Test_num64()
     call assert_equal( 4294967296,  0xFFFFffff + 1)
     call assert_equal(-4294967296, -0xFFFFffff - 1)
 
-    call assert_equal( 9223372036854775807,  1 / 0)
-    call assert_equal(-9223372036854775807, -1 / 0)
-    call assert_equal(-9223372036854775807 - 1,  0 / 0)
+    call assert_fails("echo 1 / 0", "E15")
+    call assert_fails("echo -1 / 0", "E15")
+    call assert_fails("echo 0 / 0", "E15")
 
     call assert_equal( 0x7FFFffffFFFFffff, float2nr( 1.0e150))
     call assert_equal(-0x7FFFffffFFFFffff, float2nr(-1.0e150))
